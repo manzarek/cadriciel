@@ -18,13 +18,47 @@
                         <h4>Liste des étudiants</h4>
                     </div>
                     <div class="card-body">
-                        <ul>
+                        <!-- <ul>
                             @forelse($etudiants as $etudiant)
                                 <li><a href="{{ route('college.show', $etudiant->id)}}">{{$etudiant->nom}}</a></li>
                             @empty
                                 <li class="text-danger">Aucun étudiant trouvé</li>
                             @endforelse
-                        </ul>
+                        </ul> -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                     <th scope="col">
+                                        Id
+                                    </th>
+                                    <th scope="col">
+                                        Nom de l'étudiant
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            @forelse($etudiants as $etudiant)
+                                <tr>
+                                    <td>
+                                        {{$etudiant->id}}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('college.show', $etudiant->id)}}">{{$etudiant->nom}}</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td>
+                                        ND
+                                    </td>
+                                    <td>
+                                        <p class="text-danger">Aucun étudiant trouvé</p>
+                                    </td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
